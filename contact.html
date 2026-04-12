@@ -120,7 +120,15 @@
       </div>
       
       <div class="contact-form fade-in">
-        <form action="https://formspree.io/f/your-placeholder-id" method="POST" class="custom-form">
+        <form action="https://api.web3forms.com/submit" method="POST" class="custom-form">
+          <!-- Web3Forms Access Key -->
+          <input type="hidden" name="access_key" value="fb6a3c53-6cd4-44f1-9363-e6a9fb9aea08">
+          
+          <!-- Spam Prevention (Honeypot) -->
+          <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+          
+          <!-- Custom Email Subject -->
+          <input type="hidden" name="subject" value="New Website Inquiry from LaurenCooper.me">
           <label for="name">Name *</label>
           <input type="text" id="name" name="name" required />
           
