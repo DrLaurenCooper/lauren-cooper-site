@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workshops | Dr Lauren Cooper</title>
+  <meta name="description" content="Downloadable, self-paced, repeatable workshops to spark your creativity and self-expression." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .ws-hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--bg-alt);
+    }
+    .ws-catalog {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .ws-card {
+      background: var(--white);
+      border: 1px solid var(--sage);
+      padding: 4rem;
+      margin-bottom: 4rem;
+      border-radius: 8px;
+    }
+    .ws-card__header {
+      border-bottom: 1px solid var(--sage);
+      padding-bottom: 2rem;
+      margin-bottom: 3rem;
+    }
+    .ws-card__title {
+      font-family: var(--font-heading);
+      font-size: clamp(40px, 6vw, 70px);
+      line-height: 1;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+    .ws-card__subtitle {
+      font-size: 1.25rem;
+      color: var(--blue);
+      font-style: italic;
+    }
+    .ws-card__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+    .ws-col h4 {
+      font-family: var(--font-sans);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+      color: var(--blue);
+    }
+    .ws-col ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .ws-col li {
+      margin-bottom: 1rem;
+      font-size: 1.15rem;
+      padding-left: 1.5rem;
+      position: relative;
+      line-height: 1.6;
+    }
+    .ws-col li::before {
+      content: "•";
+      color: var(--sky);
+      position: absolute;
+      left: 0;
+      top: -2px;
+      font-size: 1.2rem;
+    }
+    .ws-footer-cta {
+      margin-top: 3rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--sage);
+      text-align: center;
+    }
+    @media (max-width: 900px) {
+      .ws-card__grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .ws-card {
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── Navigation ─── -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav__logo">Lauren Cooper</a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="workshops.html">Workshops</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="blog/coming-soon.html">Digital Garden</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ─── Hero ─── -->
+  <header class="ws-hero" style="position: relative; overflow: hidden; background: transparent; color: var(--white);">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;">
+      <img src="assets/IMG_0106.jpg" alt="Lauren Cooper journaling" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" />
+    </div>
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: -1;"></div>
+    
+    <div class="fade-in">
+      <span class="section__script" style="color: var(--bg);">TIME FOR YOU & YOUR CREATIVITY</span>
+      <h2 class="section__heading" style="margin: 1rem 0 2rem 0; color: var(--white);">WORKSHOPS</h2>
+      <p style="max-width: 600px; margin: 0 auto; font-size: 1.2rem; color: var(--bg);">Downloadable, self-paced, and repeatable workshops to spark your creativity and self-expression.</p>
+    </div>
+  </header>
+
+  <!-- ─── Catalog ─── -->
+  <section class="ws-catalog">
+    
+    <!-- Workshop Card: Manifest(o)ing -->
+    <article class="ws-card fade-in">
+      <div class="ws-card__image" style="margin-bottom: 3rem;">
+        <img src="assets/Manifest(o)ing Workshop with Dr Lauren Cooper (1).jpg" alt="Manifest(o)ing Workshop with Dr Lauren Cooper" style="width: 100%; max-height: 500px; object-fit: cover; border-radius: 4px;" />
+      </div>
+
+      <div class="ws-card__header">
+        <h2 class="ws-card__title">Manifest(o)ing</h2>
+        <p class="ws-card__subtitle">A journaling and writing workshop for personal and political transformation.</p>
+      </div>
+      
+      <div class="ws-card__grid">
+        <div class="ws-col">
+          <h4>What's Included</h4>
+          <ul>
+            <li>Full video workshop with Dr Lauren Cooper (self-paced, neurodivergent-friendly format)</li>
+            <li>Accompanying worksheet with prompts and exercises</li>
+            <li>PDF containing example manifestos for close reading</li>
+            <li>Lifetime access to repeat whenever you need renewed clarity and motivation</li>
+          </ul>
+        </div>
+        
+        <div class="ws-col">
+          <h4>What you'll explore</h4>
+          <ul>
+            <li>Academic insights on feminist manifestos and their social power</li>
+            <li>Reflective journaling prompts to uncover your deepest desires</li>
+            <li>Creative writing exercises to articulate your vision</li>
+            <li>Sensitive, empathetic guidance with built-in comfort breaks</li>
+          </ul>
+        </div>
+        
+        <div class="ws-col">
+          <h4>Who it's for</h4>
+          <ul>
+            <li>Sensitive souls seeking purposeful direction</li>
+            <li>Writers and creatives exploring new forms</li>
+            <li>Anyone feeling called to personal or political transformation</li>
+            <li>Those who want to move from dreaming to doing</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="ws-footer-cta">
+        <a href="https://buymeacoffee.com/6mkifuy5mm/e/469806" target="_blank" rel="noopener" class="btn btn--dark">Get My Download</a>
+      </div>
+    </article>
+
+    <!-- Placeholder for future -->
+    <div class="fade-in" style="text-align: center; margin-top: 6rem; opacity: 0.6; padding: 4rem; border: 1px dashed var(--sage); border-radius: 8px;">
+      <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem; text-transform: uppercase;">More Coming Soon</h3>
+      <p>I am currently designing new workshops. <a href="https://theselfstudy.substack.com/subscribe" target="_blank" rel="noopener" style="color: var(--blue); border-bottom: 1px solid var(--blue);">Subscribe to my Substack newsletter to be the first to know.</a></p>
+    </div>
+
+  </section>
+
+  <!-- ─── Footer ─── -->
+  <footer class="footer">
+    <div class="footer__container fade-in">
+      <h2 class="footer__title">LAUREN<br>COOPER</h2>
+      <ul class="footer__details">
+        <li>
+          <svg viewBox="0 0 24 24" class="footer__icon"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          BASED BY THE SEA IN BOURNEMOUTH | CONNECTING ONLINE WITH SENSITIVE SOULS WORLDWIDE
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" class="footer__icon"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <a href="mailto:hello@laurencooper.me">HELLO@LAURENCOOPER.ME</a>
+        </li>
+      </ul>
+      <p class="footer__copy">@2026 COPYRIGHTED</p>
+    </div>
+  </footer>
+
+  <!-- ─── Scripts ─── -->
+  <script>
+    /* Nav scroll effect */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    /* Mobile menu */
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    /* Fade-in on scroll */
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    faders.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+
+</html>

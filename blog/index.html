@@ -1,29 +1,155 @@
 ---
 layout: base.html
-title: Blog
+title: Mind Garden
 description: Thoughts on literature, self-growth, and the inner life.
 permalink: /blog/
 ---
 
 <section class="blog-listing">
-    <span class="section__script">Mind Garden</span>
-    <h1 class="section__heading">Blog</h1>
-    <p class="section__text">Thoughts on literature, self-growth, and the inner life.</p>
+    <div class="blog-header">
+        <span class="section__script">Mind Garden</span>
+        <h1 class="section__heading">Explore</h1>
+        <p class="section__text">Click a thought to explore connected writings.</p>
+    </div>
 
-    <div class="blog-list">
+    <!-- The Constellation Map -->
+    <div class="constellation-wrapper">
+        <div class="constellation map-mode" id="constellationMap">
+            <svg class="c-lines" id="cLines"></svg>
+            <button class="c-node center active" id="node-all" data-tag="all">All Thoughts</button>
+            
+            {# Extract unique tags #}
+            {% set tags = [] %}
+            {% for tag, posts in collections %}
+                {% if tag != "all" and tag != "posts" %}
+                    {% set tags = (tags.push(tag), tags) %}
+                {% endif %}
+            {% endfor %}
+            
+            {% for tag in tags %}
+                <button class="c-node tag-node" data-tag="{{ tag }}">{{ tag | capitalize }}</button>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- The Post List -->
+    <div class="blog-list" id="blogList">
         {%- for post in collections.posts -%}
-        <a href="{{ post.url | url }}" class="blog-card">
-            <time class="blog-card__date">{{ post.date | readableDate }}</time>
-            <h2 class="blog-card__title">{{ post.data.title }}</h2>
-            <p class="blog-card__desc">{{ post.data.description }}</p>
-            <div class="blog-card__tags">
-                {%- for tag in post.data.tags -%}
-                {%- if tag != "posts" -%}
-                <span class="tag">{{ tag }}</span>
-                {%- endif -%}
-                {%- endfor -%}
-            </div>
-        </a>
+        <div class="blog-card" data-tags="{{ post.data.tags | join(',') }}">
+            <a href="{{ post.url | url }}" style="text-decoration:none;">
+                <time class="blog-card__date">{{ post.date | readableDate }}</time>
+                <h2 class="blog-card__title">{{ post.data.title }}</h2>
+                <p class="blog-card__desc">{{ post.data.description }}</p>
+                <div class="blog-card__tags">
+                    {%- for tag in post.data.tags -%}
+                    {%- if tag != "posts" -%}
+                    <span class="tag">{{ tag }}</span>
+                    {%- endif -%}
+                    {%- endfor -%}
+                </div>
+            </a>
+        </div>
         {%- endfor -%}
     </div>
 </section>
+
+<!-- Constellation Script -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('constellationMap');
+    const centerNode = document.getElementById('node-all');
+    const tagNodes = document.querySelectorAll('.tag-node');
+    const linesSvg = document.getElementById('cLines');
+    const allPosts = document.querySelectorAll('.blog-card');
+    const allNodes = document.querySelectorAll('.c-node');
+
+    function drawMap() {
+        // Only draw if we're in map mode (desktop/tablet)
+        if (window.innerWidth < 768) {
+            linesSvg.innerHTML = '';
+            tagNodes.forEach(node => {
+                node.style.position = 'relative';
+                node.style.left = 'auto';
+                node.style.top = 'auto';
+                node.style.transform = 'none';
+            });
+            centerNode.style.position = 'relative';
+            centerNode.style.left = 'auto';
+            centerNode.style.top = 'auto';
+            centerNode.style.transform = 'none';
+            return;
+        }
+
+        linesSvg.innerHTML = ''; // Clear lines
+        
+        // Reset absolute positioning for map mode
+        centerNode.style.position = 'absolute';
+        centerNode.style.left = '50%';
+        centerNode.style.top = '50%';
+        centerNode.style.transform = 'translate(-50%, -50%)';
+
+        tagNodes.forEach(node => {
+            node.style.position = 'absolute';
+        });
+
+        const radiusX = container.offsetWidth * 0.35;
+        const radiusY = container.offsetHeight * 0.35;
+        const angleStep = (2 * Math.PI) / tagNodes.length;
+
+        tagNodes.forEach((node, i) => {
+            // Add a slight offset to make it look organic, not a perfect circle
+            const organicOffset = (i % 2 === 0) ? 0 : 5; 
+            const angle = i * angleStep;
+            const x = 50 + (35 + organicOffset) * Math.cos(angle); 
+            const y = 50 + (35 - organicOffset) * Math.sin(angle); 
+            
+            node.style.left = `${x}%`;
+            node.style.top = `${y}%`;
+            node.style.transform = 'translate(-50%, -50%)';
+
+            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            line.setAttribute('x1', '50%');
+            line.setAttribute('y1', '50%');
+            line.setAttribute('x2', `${x}%`);
+            line.setAttribute('y2', `${y}%`);
+            linesSvg.appendChild(line);
+        });
+    }
+
+    drawMap();
+    window.addEventListener('resize', drawMap);
+
+    // Filtering
+    function filterPosts(selectedTag) {
+        allNodes.forEach(n => n.classList.remove('active'));
+        
+        if (selectedTag === 'all') {
+            centerNode.classList.add('active');
+            allPosts.forEach(post => {
+                post.style.display = 'block';
+                setTimeout(() => post.style.opacity = '1', 50);
+            });
+        } else {
+            const activeNode = document.querySelector(`.tag-node[data-tag="${selectedTag}"]`);
+            if(activeNode) activeNode.classList.add('active');
+
+            allPosts.forEach(post => {
+                const tags = post.dataset.tags.split(',');
+                if (tags.includes(selectedTag)) {
+                    post.style.display = 'block';
+                    setTimeout(() => post.style.opacity = '1', 50);
+                } else {
+                    post.style.opacity = '0';
+                    setTimeout(() => post.style.display = 'none', 300);
+                }
+            });
+        }
+    }
+
+    allNodes.forEach(node => {
+        node.addEventListener('click', () => {
+            filterPosts(node.dataset.tag);
+        });
+    });
+});
+</script>

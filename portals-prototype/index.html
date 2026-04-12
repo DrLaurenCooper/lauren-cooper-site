@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lauren Cooper | Portals Prototype</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Oranienbaum&family=Pinyon+Script&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #1a1a1a;
+            --text-light: #f5f3ed;
+            --white-glow: rgba(255, 255, 255, 0.8);
+            --white-glow-soft: rgba(255, 250, 240, 0.4);
+            --font-heading: 'Oranienbaum', serif;
+            --font-body: 'Cormorant Garamond', serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .portals-container {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .portal-card {
+            position: relative;
+            flex: 1;
+            max-width: 300px;
+            aspect-ratio: 9/16;
+            text-decoration: none;
+            color: inherit;
+            perspective: 1000px;
+        }
+
+        .portal-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 4px;
+            /* Slight rounding for elegance */
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.6s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .portal-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+            filter: brightness(0.85);
+            /* Slightly dim at rest */
+        }
+
+        /* The Glow Effect */
+        .portal-glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, var(--white-glow-soft) 0%, transparent 60%);
+            opacity: 0.3;
+            mix-blend-mode: screen;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            animation: pulse-glow 4s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(1.05);
+            }
+        }
+
+        .portal-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .portal-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.6s ease, letter-spacing 0.6s ease, text-shadow 0.6s ease;
+            margin: 0;
+        }
+
+        /* Hover Interaction */
+        .portal-card:hover .portal-image-wrapper {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(255, 255, 255, 0.15);
+            /* Soft white glow shadow */
+        }
+
+        .portal-card:hover .portal-image {
+            transform: scale(1.05);
+            filter: brightness(1);
+            /* Brighten on hover */
+        }
+
+        .portal-card:hover .portal-glow {
+            opacity: 0.8;
+            transform: scale(1.2);
+            background: radial-gradient(circle at center, var(--white-glow) 0%, transparent 70%);
+            /* Intensive spiritual white */
+            animation: none;
+            /* Stop pulsing, steady glow */
+        }
+
+        .portal-card:hover .portal-title {
+            transform: translateY(-5px);
+            letter-spacing: 0.2em;
+            /* Expand text */
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .portals-container {
+                flex-direction: column;
+                align-items: center;
+                overflow-y: auto;
+                height: auto;
+            }
+
+            .portal-card {
+                width: 100%;
+                max-width: 280px;
+                margin-bottom: 2rem;
+            }
+
+            body {
+                overflow-y: auto;
+                height: auto;
+                padding: 4rem 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="portals-container">
+        <!-- Portal 1: Literature -->
+        <a href="#" class="portal-card">
+            <div class="portal-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=2600"
+                    alt="Literature Portal" class="portal-image">
+                <div class="portal-glow"></div>
+                <div class="portal-overlay">
+                    <h2 class="portal-title">Literature</h2>
+                </div>
+            </div>
+        </a>
+
+        <!-- Portal 2: Selfhood -->
+        <a href="#" class="portal-card">
+            <div class="portal-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=2670"
+                    alt="Selfhood Portal" class="portal-image">
+                <div class="portal-glow"></div>
+                <div class="portal-overlay">
+                    <h2 class="portal-title">Selfhood</h2>
+                </div>
+            </div>
+        </a>
+
+        <!-- Portal 3: Self-Care -->
+        <a href="#" class="portal-card">
+            <div class="portal-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=2670"
+                    alt="Self-Care Portal" class="portal-image">
+                <div class="portal-glow"></div>
+                <div class="portal-overlay">
+                    <h2 class="portal-title">Self-Care</h2>
+                </div>
+            </div>
+        </a>
+    </div>
+
+</body>
+
+</html>

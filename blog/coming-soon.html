@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Garden | Dr Lauren Cooper</title>
+  <meta name="description" content="Lauren Cooper's Digital Garden — an interactive, associative, and evolving collection of subject knowledge, reflections, and resources. Coming soon." />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .dg-hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .dg-content {
+      position: relative;
+      z-index: 2;
+    }
+    .dg-coming-soon {
+      padding: 6rem 2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .dg-coming-soon p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── Navigation ─── -->
+  <nav class="nav" id="nav">
+    <a href="../index.html" class="nav__logo">Lauren Cooper</a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../workshops.html">Workshops</a></li>
+      <li><a href="../courses.html">Courses</a></li>
+      <li><a href="../blog/index.html">Digital Garden</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+    <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ─── Hero ─── -->
+  <header class="dg-hero">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;">
+      <img src="../assets/IMG_0021.jpg" alt="Digital Garden" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" />
+    </div>
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.45); z-index: -1;"></div>
+
+    <div class="dg-content fade-in">
+      <span class="section__script" style="color: var(--bg);">AN EVOLVING COLLECTION</span>
+      <h2 class="section__heading" style="margin: 1rem 0 2rem 0; color: var(--white);">DIGITAL GARDEN</h2>
+      <p style="max-width: 560px; margin: 0 auto; font-size: 1.2rem; color: var(--bg);">An interactive, associative, and evolving collection of subject knowledge, reflections, and resources.</p>
+    </div>
+  </header>
+
+  <!-- ─── Coming Soon ─── -->
+  <section class="dg-coming-soon fade-in">
+    <span class="section__script" style="color: var(--blue);">COMING SOON</span>
+    <h2 class="section__heading" style="margin: 1rem 0 2rem 0;">SEEDS ARE BEING<br>PLANTED</h2>
+    <p>The Digital Garden is being carefully cultivated. This will be a space to wander, explore, and make unexpected connections — following threads of thought across literature, selfhood, and self-care at your own pace.</p>
+    <p>In the meantime, you can find my writing over on Substack.</p>
+    <a href="https://theselfstudy.substack.com/" target="_blank" rel="noopener" class="btn btn--dark">Visit My Substack</a>
+  </section>
+
+  <!-- ─── Footer ─── -->
+  <footer class="footer">
+    <div class="footer__container fade-in">
+      <h2 class="footer__title">LAUREN<br>COOPER</h2>
+      <ul class="footer__details">
+        <li>
+          <svg viewBox="0 0 24 24" class="footer__icon"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          BASED BY THE SEA IN BOURNEMOUTH | CONNECTING ONLINE WITH SENSITIVE SOULS WORLDWIDE
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" class="footer__icon"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <a href="mailto:hello@laurencooper.me">HELLO@LAURENCOOPER.ME</a>
+        </li>
+      </ul>
+      <p class="footer__copy">@2026 COPYRIGHTED</p>
+    </div>
+  </footer>
+
+  <!-- ─── Scripts ─── -->
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    faders.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+
+</html>

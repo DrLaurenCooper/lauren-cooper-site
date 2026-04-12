@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Dr Lauren Cooper</title>
+  <meta name="description" content="Get in touch with Dr Lauren Cooper." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      align-items: flex-start;
+    }
+
+    .contact-hero {
+      padding-top: 10rem;
+      padding-bottom: 4rem;
+    }
+
+    .custom-form {
+      background: var(--white);
+      padding: 3rem;
+      border-radius: 8px;
+    }
+
+    .custom-form label {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--blue);
+    }
+
+    .custom-form input,
+    .custom-form select,
+    .custom-form textarea {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--sage);
+      border-radius: 4px;
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      background: var(--bg-alt);
+      color: var(--text);
+      transition: border-color 0.3s;
+    }
+
+    .custom-form input:focus,
+    .custom-form select:focus,
+    .custom-form textarea:focus {
+      outline: none;
+      border-color: var(--sky);
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .contact-hero {
+        padding-top: 8rem;
+      }
+      .custom-form {
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── Navigation ─── -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav__logo">Lauren Cooper</a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="workshops.html">Workshops</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="blog/coming-soon.html">Digital Garden</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ─── Contact Section ─── -->
+  <section class="contact-hero">
+    <div class="contact-grid">
+      <div class="contact-text fade-in">
+        <span class="section__script" style="padding-left: 3px;">LET'S CONNECT</span>
+        <h2 class="section__heading" style="text-align: left; margin-top: 0; line-height: 1; margin-bottom: 2rem; text-transform: uppercase;">REACH OUT</h2>
+        
+        <p style="font-size: 1.25rem; font-style: italic; color: var(--blue); margin-bottom: 1.5rem;">
+          Thank you for your interest in working with me.
+        </p>
+        
+        <p style="margin-bottom: 1.5rem; font-size: 1.15rem; line-height: 1.8;">
+          I'm excited to connect with you and talk about how I can support you. Please share some details below about the offering you're interested in, a little about your self and any questions you would like me to respond to.
+        </p>
+        
+        <p style="margin-bottom: 2.5rem; font-size: 1.15rem; line-height: 1.8;">
+          Please note, I really practice what I preach when it comes to self-care, so I will respond when I am best able to, usually within a few days, and appreciate your patience in the meantime.
+        </p>
+        
+        <div style="background: var(--bg-alt); padding: 1.5rem; border-left: 4px solid var(--sky);">
+          <h3 style="font-family: var(--font-sans); font-size: 1rem; color: var(--sky); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 500;">Email directly</h3>
+          <a href="mailto:hello@laurencooper.me" style="color: var(--blue); font-size: 1.2rem; font-weight: bold; border-bottom: 1px solid var(--blue);">hello@laurencooper.me</a>
+        </div>
+      </div>
+      
+      <div class="contact-form fade-in">
+        <form action="https://formspree.io/f/your-placeholder-id" method="POST" class="custom-form">
+          <label for="name">Name *</label>
+          <input type="text" id="name" name="name" required />
+          
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required />
+          
+          <label for="offering">Offering Type</label>
+          <select id="offering" name="offering">
+              <option value="">Please select...</option>
+              <option value="Workshops">Workshops</option>
+              <option value="Courses">Courses</option>
+              <option value="1:1 Work">1:1 Work</option>
+              <option value="Other">Other</option>
+          </select>
+          
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+          
+          <button type="submit" class="btn btn--dark" style="margin-top: 1rem; width: 100%; border-radius: 4px;">SEND MESSAGE</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Footer ─── -->
+  <footer class="footer">
+    <div class="footer__container fade-in">
+      <h2 class="footer__title">LAUREN<br>COOPER</h2>
+      <ul class="footer__details">
+        <li>
+          <svg viewBox="0 0 24 24" class="footer__icon"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          BASED BY THE SEA IN BOURNEMOUTH | CONNECTING ONLINE WITH SENSITIVE SOULS WORLDWIDE
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" class="footer__icon"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <a href="mailto:hello@laurencooper.me">HELLO@LAURENCOOPER.ME</a>
+        </li>
+      </ul>
+      <p class="footer__copy">@2026 COPYRIGHTED</p>
+    </div>
+  </footer>
+
+  <!-- ─── Scripts ─── -->
+  <script>
+    /* Nav scroll effect */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    /* Mobile menu */
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    /* Fade-in on scroll */
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    faders.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+
+</html>

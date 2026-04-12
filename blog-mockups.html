@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Redesign Concepts | Dr Lauren Cooper</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: var(--bg);
+      color: var(--text);
+    }
+    .concept-header {
+      text-align: center;
+      padding: 6rem 2rem 2rem;
+      border-bottom: 1px solid var(--light);
+      margin-bottom: 4rem;
+    }
+    .concept-header h1 {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      color: var(--blue);
+      text-transform: uppercase;
+    }
+    .concept-section {
+      margin-bottom: 8rem;
+      padding: 0 5%;
+    }
+    .concept-title {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      color: var(--sky);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .concept-desc {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 4rem;
+      font-size: 1.1rem;
+      font-style: italic;
+    }
+
+    /* ── Concept 1: The Editorial Masonry (Scattered Desk) ── */
+    .masonry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-gap: 2rem;
+      grid-auto-flow: dense;
+    }
+    .masonry-item {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 2px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      transition: transform 0.3s;
+    }
+    .masonry-item:hover {
+      transform: translateY(-5px);
+    }
+    .masonry-item.large {
+      grid-column: span 2;
+      grid-row: span 2;
+      background: var(--sage);
+    }
+    .masonry-item.quote {
+      background: var(--blue);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+    }
+    .m-tag {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--sky);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .m-title {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      color: var(--blue);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    /* ── Concept 2: The Constellation / Mind Map ── */
+    .constellation {
+      position: relative;
+      height: 60vh;
+      min-height: 600px;
+      background: var(--white);
+      border: 1px solid var(--light);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .c-node {
+      position: absolute;
+      background: var(--bg);
+      padding: 1.5rem;
+      border-radius: 50%;
+      width: 140px;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      color: var(--blue);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: all 0.4s;
+      z-index: 2;
+    }
+    .c-node:hover {
+      transform: scale(1.1);
+      background: var(--blue);
+      color: var(--white);
+    }
+    .c-node.center {
+      width: 200px;
+      height: 200px;
+      font-size: 1.8rem;
+      background: var(--sky);
+      color: var(--white);
+      z-index: 3;
+    }
+    /* SVG lines for mockup */
+    .c-lines {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 1;
+    }
+    .c-lines line {
+      stroke: var(--light);
+      stroke-width: 1.5;
+      stroke-dasharray: 4;
+    }
+
+    /* ── Concept 3: The Filtered Pathway (Horizontal Shelves) ── */
+    .pathway {
+      margin-bottom: 4rem;
+    }
+    .p-header {
+      display: flex;
+      align-items: flex-end;
+      border-bottom: 1px solid var(--blue);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+    .p-title {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      color: var(--blue);
+      margin: 0;
+      flex: 1;
+    }
+    .p-scroll {
+      display: flex;
+      gap: 2rem;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+      scrollbar-width: thin;
+    }
+    .p-card {
+      flex: 0 0 300px;
+      background: var(--white);
+      padding: 2rem;
+      border-left: 2px solid var(--sky);
+    }
+    .p-card h4 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: var(--blue);
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="concept-header">
+    <h1>Blog Redesign Concepts</h1>
+    <p>Exploring non-linear, aesthetic pathways for your digital garden.</p>
+  </div>
+
+  <!-- CONCEPT 1 -->
+  <div class="concept-section">
+    <h2 class="concept-title">Concept 1: The Editorial Desk</h2>
+    <p class="concept-desc">A beautiful, staggered masonry grid. It feels like looking at a curated magazine spread or a scattering of notes and books on a desk. Posts vary in size based on importance, mixed with large aesthetic pull-quotes.</p>
+    
+    <div class="masonry-grid">
+      <div class="masonry-item large">
+        <span class="m-tag">Deep Dive</span>
+        <h3 class="m-title">Why I love Brontë (and why you should too)</h3>
+        <p>A sweeping exploration of the moors, the madness, and the radical empathy found in Charlotte and Emily's defining works.</p>
+      </div>
+      <div class="masonry-item">
+        <span class="m-tag">Self-care</span>
+        <h3 class="m-title">Protecting your peace as an empath</h3>
+      </div>
+      <div class="masonry-item quote">
+        "Every book you dust off from the shelf has lines you read about yourself."
+      </div>
+      <div class="masonry-item">
+        <span class="m-tag">Journaling</span>
+        <h3 class="m-title">Prompts for the turning of the season</h3>
+      </div>
+      <div class="masonry-item">
+        <span class="m-tag">Literature</span>
+        <h3 class="m-title">The Anatomy of a Perfect Sentence</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCEPT 2 -->
+  <div class="concept-section">
+    <h2 class="concept-title">Concept 2: The Constellation Mind Map</h2>
+    <p class="concept-desc">A highly interactive, non-linear experience. Visitors see a constellation of floating topics. Clicking a topic shifts the map to reveal related essays and thoughts, encouraging wandering.</p>
+    
+    <div class="constellation">
+      <svg class="c-lines">
+        <line x1="50%" y1="50%" x2="25%" y2="30%" />
+        <line x1="50%" y1="50%" x2="75%" y2="25%" />
+        <line x1="50%" y1="50%" x2="20%" y2="70%" />
+        <line x1="50%" y1="50%" x2="80%" y2="65%" />
+        <line x1="25%" y1="30%" x2="10%" y2="40%" />
+      </svg>
+      <div class="c-node center">Start Here</div>
+      <div class="c-node" style="top: 15%; left: 15%;">Literature</div>
+      <div class="c-node" style="top: 10%; right: 15%;">Healing</div>
+      <div class="c-node" style="bottom: 15%; left: 10%;">Empathy</div>
+      <div class="c-node" style="bottom: 15%; right: 10%;">Selfhood</div>
+      <div class="c-node" style="top: 30%; left: 2%;">Brontë</div>
+    </div>
+  </div>
+
+  <!-- CONCEPT 3 -->
+  <div class="concept-section">
+    <h2 class="concept-title">Concept 3: The Thematic Shelves</h2>
+    <p class="concept-desc">Organized like bookshelves in a quiet library. Instead of chronological sorting, posts are grouped into horizontal scrollers across overarching themes or 'vibes', allowing readers to browse categories that match their mood.</p>
+    
+    <div class="pathway">
+      <div class="p-header">
+        <h3 class="p-title">On Sensitivity & Being Seen</h3>
+      </div>
+      <div class="p-scroll">
+        <div class="p-card">
+          <h4>Protecting your peace</h4>
+          <p>Navigating loud spaces with a quiet heart...</p>
+        </div>
+        <div class="p-card">
+          <h4>The power of 'too much'</h4>
+          <p>Reclaiming the narrative around high sensitivity...</p>
+        </div>
+        <div class="p-card">
+          <h4>Boundaries as self-love</h4>
+          <p>How to say no when the world demands yes...</p>
+        </div>
+        <div class="p-card">
+          <h4>Safe havens in books</h4>
+          <p>Finding our reflections in fictional characters...</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pathway">
+      <div class="p-header">
+        <h3 class="p-title">Literary Deep Dives</h3>
+      </div>
+      <div class="p-scroll">
+        <div class="p-card">
+          <h4>Why I love Brontë</h4>
+          <p>A look into the gothic moors...</p>
+        </div>
+        <div class="p-card">
+          <h4>Virginia Woolf's moments of being</h4>
+          <p>Capturing the ephemeral in prose...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
