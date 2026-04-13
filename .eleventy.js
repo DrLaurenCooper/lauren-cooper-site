@@ -3,6 +3,7 @@ module.exports = function (eleventyConfig) {
     // Pass through static assets untouched
     eleventyConfig.addPassthroughCopy("assets");
     eleventyConfig.addPassthroughCopy("style.css");
+    eleventyConfig.addPassthroughCopy("CNAME");
 
     // Blog posts collection, sorted by date (newest first)
     eleventyConfig.addCollection("posts", function (collectionApi) {
