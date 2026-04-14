@@ -62,7 +62,7 @@ h3 {
     font-family: var(--font-heading);
     font-size: clamp(35px, 8vw, 75px);
     font-weight: normal;
-    line-height: 0.5;
+    line-height: 1.1;
     letter-spacing: 0;
 }
 
@@ -951,7 +951,7 @@ a {
         padding-left: 10%;
         justify-content: flex-start;
         align-items: flex-start;
-        padding-top: 27.5vh; /* shift text down slightly */
+        padding-top: 35vh; /* shift text down slightly */
     }
     
     .hero__content {
