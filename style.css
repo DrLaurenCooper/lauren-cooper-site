@@ -951,7 +951,7 @@ a {
         padding-left: 10%;
         justify-content: flex-start;
         align-items: flex-start;
-        padding-top: 35vh; /* shift text down slightly */
+        padding-top: 32vh; /* shift text down slightly */
     }
     
     .hero__content {
